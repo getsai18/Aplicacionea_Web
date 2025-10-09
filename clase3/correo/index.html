@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso de Usuario</title>
+</head>
+<body>
+
+<div>
+    <h2>ACCESO DE USUARIO</h2>
+    
+    <form id="formulario-acceso">
+        <div>
+            <label for="campo-usuario">Nombre de Usuario:</label>
+            <input type="text" id="campo-usuario" required>
+        </div>
+        
+        <br>
+        
+        <div>
+            <label for="campo-contrasena">Contraseña:</label>
+            <input type="password" id="campo-contrasena" required>
+        </div>
+        
+        <br>
+        
+        <button type="submit">Ingresar</button>
+    </form>
+    
+    <p id="mensaje-error" style="color: red;"></p>
+</div>
+
+<script>
+    const formulario = document.getElementById('formulario-acceso');
+    const mensajeError = document.getElementById('mensaje-error');
+
+    formulario.addEventListener('submit', function(evento) {
+        evento.preventDefault();
+        
+        const usuario = document.getElementById('campo-usuario').value.trim();
+        const contrasena = document.getElementById('campo-contrasena').value.trim();
+        
+        mensajeError.textContent = '';
+        
+        if (usuario === '' && contrasena === '') {
+            mensajeError.textContent = 'Faltan el Nombre de Usuario y la Contraseña.';
+        } else if (usuario === '') {
+            mensajeError.textContent = 'Falta el Nombre de Usuario.';
+        } else if (contrasena === '') {
+            mensajeError.textContent = 'Falta la Contraseña.';
+        } else {
+            mensajeError.textContent = 'Datos completos. Intentando ingresar...';
+        }
+    });
+</script>
+
+</body>
+</html>
